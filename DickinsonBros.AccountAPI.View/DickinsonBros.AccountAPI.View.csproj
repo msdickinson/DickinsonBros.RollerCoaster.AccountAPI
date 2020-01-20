@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SignalR\5owp3x2p.srk~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DickinsonBros.Logger.Abstractionsci-20191224-201313" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.Loggerci-20191224-201856" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.Middlewareci-20191224-202950" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.Redactor.Abstractionsci-20191224-200914" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.Redactorci-20191224-201144" Version="1.0.0" />
+    <PackageReference Include="MailKit" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.Splunk" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DickinsonBros.AccountAPI.Abstractions\DickinsonBros.AccountAPI.Abstractions.csproj" />
+    <ProjectReference Include="..\DickinsonBros.AccountAPI.Infrastructure\DickinsonBros.AccountAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\DickinsonBros.AccountAPI.Logic\DickinsonBros.AccountAPI.Logic.csproj" />
+  </ItemGroup>
+
+ 
+</Project>
