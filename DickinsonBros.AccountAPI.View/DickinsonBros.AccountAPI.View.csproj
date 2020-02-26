@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="SignalR\5owp3x2p.srk~" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="DickinsonBros.Logger.Abstractionsci-20191224-201313" Version="1.0.0" />
     <PackageReference Include="DickinsonBros.Loggerci-20191224-201856" Version="1.0.0" />
     <PackageReference Include="DickinsonBros.Middlewareci-20191224-202950" Version="1.0.0" />

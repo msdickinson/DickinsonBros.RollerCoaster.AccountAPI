@@ -1,5 +1,6 @@
 ﻿using DickinsonBros.AccountAPI.Abstractions;
 using DickinsonBros.DurableRest;
+using Microsoft.Extensions.Options;
 using RestSharp;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace DickinsonBros.AccountAPI.Proxy
         internal const string RESOURCE_V1 = "/api/v1/Account/";
         internal readonly string BASE_URL = "";
         internal readonly IDurableRestService _durableRestService;
-        public AccountProxy(IDurableRestService durableRestService, string baseURL)
+        public AccountProxy(IDurableRestService durableRestService, IOptions<AccountProxyOptions> accountProxyOptions)
         {
             _durableRestService = durableRestService;
             BASE_URL = baseURL;
