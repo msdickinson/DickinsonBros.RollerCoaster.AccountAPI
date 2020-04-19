@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using System.Data;
 using Microsoft.Extensions.Options;
 using DickinsonBros.AccountAPI.Contracts;
-using DickinsonBros.Encryption;
-using DickinsonBros.SQL;
 using DickinsonBros.AccountAPI.Abstractions;
+using DickinsonBros.SQL.Abstractions;
+using DickinsonBros.Encryption.Abstractions;
 
 namespace DickinsonBros.AccountAPI.Infrastructure.AccountDB
 {
@@ -27,7 +27,7 @@ namespace DickinsonBros.AccountAPI.Infrastructure.AccountDB
         internal const string UPDATE_EMAIL_ACTIVE_WITH_TOKEN =              "[Account].[UpdateEmailActiveWithToken]";
         internal const string DELETE_PASSWORD_RESET_TOKEN =                 "[Account].[DeletePasswordResetToken]";
 
-        public AccountDBService(IOptions<DickinsonBrosDB> dickinsonBrosDB, IEncryptionService encryptionService, ISQLService sqlService)
+        public AccountDBService(IOptions<Models.AccountDB> dickinsonBrosDB, IEncryptionService encryptionService, ISQLService sqlService)
         {
             _dickinsonBrosDBConnectionString = encryptionService.Decrypt(dickinsonBrosDB.Value.ConnectionString);
             _sqlService = sqlService;

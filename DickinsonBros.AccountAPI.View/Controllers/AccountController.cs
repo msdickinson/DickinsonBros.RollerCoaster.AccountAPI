@@ -8,8 +8,8 @@ using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using DickinsonBros.AccountAPI.Infrastructure.JWT;
-using DickinsonBros.DateTime;
 using DickinsonBros.AccountAPI.Abstractions;
+using DickinsonBros.DateTime.Abstractions;
 
 namespace DickinsonBros.AccountAPI.View.Controllers
 {
@@ -61,6 +61,11 @@ namespace DickinsonBros.AccountAPI.View.Controllers
                 return StatusCode(409);
             }
 
+            if (createAccountDescriptor.AccountId is null)
+            {
+                return StatusCode(500);
+            }
+
             string accountId = Convert.ToString((int)createAccountDescriptor.AccountId);
 
             return Ok(GetNewJWTTokens(Convert.ToString(accountId)));
@@ -93,7 +98,13 @@ namespace DickinsonBros.AccountAPI.View.Controllers
                 return StatusCode(404);
             }
 
-            return Ok(GetNewJWTTokens(Convert.ToString(loginRequest.AccountId)));
+            var accountId = Convert.ToString(loginRequest.AccountId);
+            if(String.IsNullOrWhiteSpace(accountId))
+            {
+                return StatusCode(500);
+            }
+
+            return Ok(GetNewJWTTokens(accountId));
         }
 
         [AllowAnonymous]

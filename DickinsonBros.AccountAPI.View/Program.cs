@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using DickinsonBros.AccountAPI.View.SignalR;
 using DickinsonBros.Logger.Abstractions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -19,7 +18,6 @@ namespace DickinsonBros.AccountAPI.View
                 var hostBuilder = CreateHostBuilder(args);
                 var host = hostBuilder.Build();
 
-                var client = (ILoggingService<Program>)host.Services.GetService(typeof(IClient));
                 logger = (ILoggingService<Program>)host.Services.GetService(typeof(ILoggingService<Program>));
                 logger.LogInformationRedacted("Account API - Starting");
 

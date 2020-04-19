@@ -7,12 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.30" />
-    <PackageReference Include="DickinsonBros.DateTimeci-20191224-043326" Version="1.0.0" />
-    <PackageReference Include="DickinsonBros.Encryptionci-20191224-055518" Version="1.0.0" />
-    <PackageReference Include="DickinsonBros.Guid.Abstractionsci-20191224-051355" Version="1.0.0" />
-    <PackageReference Include="DickinsonBros.Guidci-20191224-051833" Version="1.0.0" />
-    <PackageReference Include="DickinsonBros.SQLci-20190924-150901" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.SQL" Version="1.0.0" />
     <PackageReference Include="MailKit" Version="2.4.1" />
+    <PackageReference Include="DickinsonBros.Encryption.Abstractions" Version="1.0.0" />
+    <PackageReference Include="DickinsonBros.Guid.Abstractions" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />

@@ -21,9 +21,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using DickinsonBros.AccountAPI.Infrastructure.PasswordEncryption;
 using DickinsonBros.AccountAPI.Infrastructure.JWT.Models;
 using DickinsonBros.AccountAPI.Infrastructure.JWT;
-using DickinsonBros.DateTime;
 using DickinsonBros.Guid.Abstractions;
-using DickinsonBros.Guid;
 using DickinsonBros.Encryption;
 using DickinsonBros.Logger.Abstractions;
 using DickinsonBros.SQL;
@@ -32,7 +30,10 @@ using DickinsonBros.Redactor;
 using DickinsonBros.Redactor.Models;
 using DickinsonBros.Logger;
 using DickinsonBros.Middleware;
-using DickinsonBros.AccountAPI.View.SignalR;
+using DickinsonBros.DateTime.Abstractions;
+using DickinsonBros.DateTime;
+using DickinsonBros.SQL.Abstractions;
+using DickinsonBros.Guid;
 
 namespace DickinsonBros.AccountAPI.View
 {
@@ -54,7 +55,7 @@ namespace DickinsonBros.AccountAPI.View
             });
             services.AddOptions();
 
-            services.Configure<DickinsonBrosDB>(Configuration.GetSection("DickinsonBrosDB"));
+            services.Configure<AccountDB>(Configuration.GetSection("DickinsonBrosDB"));
             services.Configure<JsonRedactorOptions>(Configuration.GetSection("JsonRedactorOptions"));
             services.Configure<EncryptionSettings>(Configuration.GetSection("EncryptionSettings"));
             services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
@@ -65,7 +66,6 @@ namespace DickinsonBros.AccountAPI.View
             services.AddSingleton<IJWTService, JWTService>();
             services.AddSingleton<IDateTimeService, DateTimeService>();
             services.AddSingleton<IAccountManager, AccountManager>();
-            //services.AddSingleton<IClient, Client>();
             services.AddSingleton<IEmailService, EmailService>();
             services.AddScoped<ICorrelationService, CorrelationService>();
             services.AddScoped(typeof(ILoggingService<>), typeof(LoggingService<>));
