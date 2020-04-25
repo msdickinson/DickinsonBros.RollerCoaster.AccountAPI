@@ -9,15 +9,7 @@
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "Swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "DEBUG"
-      }
-    },
-    "DickinsonBros.AccountAPI.View": {
+    "DEBUG": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "Swagger",

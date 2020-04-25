@@ -34,6 +34,8 @@ using DickinsonBros.DateTime.Abstractions;
 using DickinsonBros.DateTime;
 using DickinsonBros.SQL.Abstractions;
 using DickinsonBros.Guid;
+using DickinsonBros.Encryption.Models;
+using DickinsonBros.Encryption.Abstractions;
 
 namespace DickinsonBros.AccountAPI.View
 {
@@ -42,10 +44,10 @@ namespace DickinsonBros.AccountAPI.View
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -55,10 +57,10 @@ namespace DickinsonBros.AccountAPI.View
             });
             services.AddOptions();
 
-            services.Configure<AccountDB>(Configuration.GetSection("DickinsonBrosDB"));
-            services.Configure<JsonRedactorOptions>(Configuration.GetSection("JsonRedactorOptions"));
-            services.Configure<EncryptionSettings>(Configuration.GetSection("EncryptionSettings"));
-            services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
+            services.Configure<AccountDB>(_configuration.GetSection("DickinsonBrosDB"));
+            services.Configure<JsonRedactorOptions>(_configuration.GetSection("JsonRedactorOptions"));
+            services.Configure<EncryptionSettings>(_configuration.GetSection("EncryptionSettings"));
+            services.Configure<JWTSettings>(_configuration.GetSection("JWTSettings"));
             
             services.AddSingleton<IAccountDBService, AccountDBService>();
             services.AddSingleton<IEncryptionService, EncryptionService>();
@@ -88,7 +90,7 @@ namespace DickinsonBros.AccountAPI.View
                 };
             });
 
-            var JWTSettings = Configuration.GetSection("JWTSettings").Get<JWTSettings>();
+            var JWTSettings = _configuration.GetSection("JWTSettings").Get<JWTSettings>();
             var key = Encoding.ASCII.GetBytes(JWTSettings.Secret);
             services.AddAuthentication(x =>
             {
